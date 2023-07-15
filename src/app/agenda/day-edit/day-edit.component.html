@@ -1,0 +1,22 @@
+<form #f="ngForm" (ngSubmit)="onStudyAdded(f)">
+    <label for="name">Name</label>
+    <input class="form-control" 
+            type="text" 
+            name="name" 
+            id="name"
+            [ngModel]="newStudy.name"
+            #name="ngModel"
+            required>
+    <label for="time">Hours</label>
+    <input class="form-control" 
+            type="number" 
+            name="time" 
+            id="time"
+            [ngModel]="newStudy.time"
+            #time="ngModel"
+            required
+            pattern="^[1-9]+[0-9]*$"
+            >
+    <button class="btn btn-primary" type="submit">Add</button>
+    <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+</form>

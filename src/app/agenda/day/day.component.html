@@ -1,0 +1,53 @@
+
+
+<!-- <p>{{ day }}</p> -->
+
+
+<div class="list-group-item clearfix" style="min-height: 150px;">
+    <div class="pull-left col-xs-2" style="height: 100%;">
+        <h3 class="list-group-item-heading">{{dayName}}</h3>
+    </div> 
+    <div class="col-xs-7">
+        <ul class="list-group"
+        dnd-droppable [dropZones]="['studiesGroup']" (onDropSuccess)="addToDay($event)"
+        >
+            <a class="list-group-item" *ngFor="let studyItem of study"
+            dnd-draggable [dragEnabled]="true" [dragData]="{studyItem,dayName}" [dropZones]="['studiesGroup']"
+            style="height: 50px;"
+            >{{studyItem.name}} 
+            
+            <button *ngIf="hovered" class="btn btn-danger badge" (click)="onStudyDeleted(studyItem)">X</button>
+            <span class="badge">{{studyItem.time}} hours</span>
+        </a>
+        </ul>
+    </div>
+    <span class="pull-right">
+        <button class="btn btn-primary" (click)="allowAddStudy=true">Add new</button>
+        <button class="btn btn-success"[routerLink]="[studyRoute]"  routerLinkActive="active">Start</button>
+        <button class="btn btn-warning">Complete</button>
+        <app-day-edit *ngIf="allowAddStudy" [dayName]="dayName"></app-day-edit>
+        <!-- <form *ngIf="addStudy" #f="ngForm" (ngSubmit)="onStudyAdded(f)">
+            <label for="name">Name</label>
+            <input class="form-control" 
+                    type="text" 
+                    name="name" 
+                    id="name"
+                    [ngModel]="newStudy.name"
+                    #name="ngModel"
+                    required>
+            <label for="time">Hours</label>
+            <input class="form-control" 
+                    type="number" 
+                    name="time" 
+                    id="time"
+                    [ngModel]="newStudy.time"
+                    #time="ngModel"
+                    required
+                    pattern="^[1-9]+[0-9]*$"
+                    >
+            <button class="btn btn-primary" type="submit">Add</button>
+            <button class="btn btn-danger" type="button" (click)="addStudy=false">Cancel</button>
+        </form> -->
+    </span>
+    <!-- component here -->
+</div>

@@ -1,0 +1,12 @@
+
+<h1>Time elapsed:</h1>
+<h1>{{hour}}:{{minute}}:{{second}}</h1>
+<button class="btn btn-danger" (click)="onStop()" style="margin-right: 5px;">Stop!</button>
+<button class="btn btn-success" (click)="onContinue()" [disabled]="!stopped">Continue</button>
+<hr>
+<button class="btn btn-danger" (click)="resetOptions= true" style="margin-right: 5px;">Reset</button>
+<div *ngIf="resetOptions">
+    <p>Are you sure?</p>
+    <button class="btn btn-success" (click) = "onReset()" style="margin-right: 5px;">Yes</button>
+    <button class="btn btn-danger" (click)="resetOptions=false">No</button>
+</div>
